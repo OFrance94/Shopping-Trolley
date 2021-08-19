@@ -3,8 +3,8 @@ import java.util.Scanner;
 public class Shopping {
 
 	static Scanner custInput = new Scanner(System.in);
-	static String discountItem = "";
-	static float disAmount = 0;
+	static String discountItem;
+	static float disAmount;
 
 	public static void main(String[] args) {
 
@@ -22,8 +22,13 @@ public class Shopping {
 			System.out.println("Please enter the amount of the item you would like.");
 			String itemnum = custInput.nextLine();
 			int itemAmount = Integer.parseInt(itemnum);
-
+			if(itemName.isEmpty() || itemcos.isEmpty() || itemnum.isEmpty()) {
+				System.out.println("Please make sure to type something for each aspect of your item. Restarting.");
+				continue;
+			}
+			else {
 			shoppingTrolley.addItem(itemName, itemPrice, itemAmount);
+			}
 		}
 
 		for (Item i : shoppingTrolley.itemList) {
@@ -45,6 +50,9 @@ public class Shopping {
 					break;
 				}
 			}
+			else if(confirm.equals("n")) {
+				break;
+			}
 		}
 		System.out.println(
 				"Please type the name of any item with a discount. If none, please leave blank and press enter.");
@@ -57,7 +65,7 @@ public class Shopping {
 		if (!discInput.isEmpty()) {
 			disAmount = Float.parseFloat(discInput);
 		}
-		if (!discountItem.isEmpty() && !(disAmount == 0)) {
+		if (!(discountItem==null) && !(disAmount==0)) {
 			shoppingTrolley.saleApply(discountItem, disAmount);
 		}
 
