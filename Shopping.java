@@ -9,7 +9,7 @@ public class Shopping {
 	public static void main(String[] args) {
 
 		System.out.println(
-				"Welcome! Please begin adding items to your cart. When finished, please type \"Finish\" to get your total.");
+				"Welcome! Please begin adding items to your cart. When finished, please type \"Finish\" to move on to discounts.");
 		while (true) {
 			System.out.println("Please enter the name of the item you wish to add.");
 			String itemName = custInput.nextLine();
@@ -52,7 +52,7 @@ public class Shopping {
 		if (!userinput.isEmpty()) {
 			discountItem = userinput;
 		}
-		System.out.println("Please type the discount amount. If none, please leave blank and press enter.");
+		System.out.println("Please type the discount percent. If none, please leave blank and press enter.");
 		String discInput = custInput.nextLine();
 		if (!discInput.isEmpty()) {
 			disAmount = Float.parseFloat(discInput);

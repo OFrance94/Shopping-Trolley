@@ -34,10 +34,11 @@ public class shoppingTrolley extends Shopping {
 		}
 	}
 
-	public static void saleApply(String itemName, float discount) {
+	public static void saleApply(String itemName, float discountPercent) {
+		float discount = discountPercent / 100;
 		for (Item i : itemList) {
 			if (i.getName().equals(itemName)) {
-				i.setPrice(i.getPrice() - discount);
+				i.setPrice(i.getPrice() * discount);
 				break;
 			}
 		}
